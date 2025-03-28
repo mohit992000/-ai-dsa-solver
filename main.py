@@ -37,7 +37,37 @@ class DSASolver:
 # Example Usage
 if __name__ == "__main__":
     solver = DSASolver()
-    problem_statement = "Find the maximum element in an array."
-    test_cases = [{"input": [[1, 2, 3, 4, 5]], "output": 5}]
+    problem_statement = "Perform binary search on an array to find a target element."
+    test_cases = [
+        {"input": [[1, 2, 3, 4, 5], 3], "output": 2},
+        {"input": [[1, 2, 3, 4, 5], 1], "output": 0},
+        {"input": [[1, 2, 3, 4, 5], 5], "output": 4},
+        {"input": [[1, 2, 3, 4, 5], 6], "output": -1}
+    ]
 
-    solver.solve(problem_statement, test_cases)
+    # 👇 Force binary search for this test
+    parsed_data = {
+        "data_structures": ["binary search"],
+        "problem_types": ["search"],
+        "constraints": ["O(log n)"]
+    }
+
+    # Use generator directly to test (skip auto-parser temporarily)
+    from modules.solution_generator import SolutionGenerator
+    from modules.execution_engine import ExecutionEngine
+    from modules.security_module import SecurityModule
+
+    generator = SolutionGenerator()
+    executor = ExecutionEngine()
+    security = SecurityModule()
+
+    code = generator.generate_solution(problem_statement, parsed_data)
+    encrypted = security.encrypt_code(code)
+    decrypted = security.decrypt_code(encrypted)
+
+    print("\n🤖 Generated Code:\n", code)
+    print("\n🔐 Encrypted Code:", encrypted)
+    print("\n🔓 Decrypted Code:\n", decrypted)
+
+    results = executor.execute_solution(decrypted, test_cases)
+    print("\n✅ Execution Results:", results)
