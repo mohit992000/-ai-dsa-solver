@@ -37,13 +37,18 @@ class DSASolver:
 # Example Usage
 if __name__ == "__main__":
     solver = DSASolver()
+    
     problem_statement = "Perform binary search on an array to find a target element."
+    
     test_cases = [
         {"input": [[1, 2, 3, 4, 5], 3], "output": 2},
         {"input": [[1, 2, 3, 4, 5], 1], "output": 0},
         {"input": [[1, 2, 3, 4, 5], 5], "output": 4},
         {"input": [[1, 2, 3, 4, 5], 6], "output": -1}
     ]
+
+    solver.solve(problem_statement, test_cases)
+    
 
     # 👇 Force binary search for this test
     parsed_data = {
