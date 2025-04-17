@@ -36,15 +36,14 @@ class DSASolver:
 
 # Example Usage
 if __name__ == "__main__":
+    from modules.solver import DSASolver  # Update this if your solver import is different
     solver = DSASolver()
-    
-    problem_statement = "Perform binary search on an array to find a target element."
-    
+
+    problem_statement = "Sort the given array in ascending order using efficient sorting technique."
+
     test_cases = [
-        {"input": [[1, 2, 3, 4, 5], 3], "output": 2},
-        {"input": [[1, 2, 3, 4, 5], 1], "output": 0},
-        {"input": [[1, 2, 3, 4, 5], 5], "output": 4},
-        {"input": [[1, 2, 3, 4, 5], 6], "output": -1}
+        {"input": [[5, 3, 1, 4, 2]], "output": [1, 2, 3, 4, 5]},
+        {"input": [[10, -2, 7, 0]], "output": [-2, 0, 7, 10]}
     ]
 
     solver.solve(problem_statement, test_cases)

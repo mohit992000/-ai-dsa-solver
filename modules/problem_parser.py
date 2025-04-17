@@ -22,11 +22,18 @@ class ProblemParser:
             "recursion": ["recursive", "recursively", "base case", "call itself"],
             "dynamic programming": ["dp", "memoization", "overlapping subproblems", "bottom-up", "top-down"],
         }
+       
+        self.known_constraints = [
+            "O\\(n\\)", "O\\(n\\^2\\)", "O\\(log n\\)", "O\\(1\\)", "O\\(n log n\\)",
+            "without extra space", "use recursion", "avoid recursion",
+            "constant space", "linear time", "logarithmic time"
+        ]
 
     def parse(self, problem: str) -> Dict:
         problem = problem.lower()
         detected_structures = []
         detected_types = []
+        detected_constraints = []
 
         for key, phrases in self.known_structures.items():
             if any(p in problem for p in phrases):
@@ -34,12 +41,18 @@ class ProblemParser:
 
         for key, phrases in self.known_problem_types.items():
             if any(p in problem for p in phrases):
-                detected_types.append(key)
+                detected_types.append(key) 
+
+        for pattern in self.known_constraints:
+            match = re.search(pattern.lower(), problem)
+            if match:
+                detected_constraints.append(match.group())
+
 
         return {
             "data_structures": detected_structures or ["Unclassified"],
             "problem_types": detected_types or ["Unclassified"],
-            "constraints": ["Not Mentioned"]  # We can enhance this later
+            "constraints": detected_constraints or ["Not Mentioned"]
         }
 
 # Example Usage
